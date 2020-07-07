@@ -1,18 +1,18 @@
 /* Global Styles */
 @font-face {
-  font-family: primary;
+  font-family: secondary;
   src: url(../static/fonts/TitilliumWeb-Regular.ttf);
 }
 @font-face {
-  font-family: primary-bold;
+  font-family: secondary-bold;
   src: url(../static/fonts/TitilliumWeb-Bold.ttf);
 }
 @font-face {
-  font-family: secondary;
+  font-family: primary;
   src: url(../static/fonts/Aleo-Regular.ttf);
 }
 @font-face {
-  font-family: secondary-bold;
+  font-family: primary-bold;
   src: url(../static/fonts/Aleo-Bold.ttf);
 }
 @font-face {
@@ -27,20 +27,20 @@
   --font-secondary-bold: secondary;
   --font-script: script;
 
-  --color-primay-1: rgb(25, 125, 62);
-  --color-primay-2: rgb(29, 145, 71);
-  --color-primay-3: rgb(33, 167, 82);
-  --color-primay-4: rgb(41, 210, 103);
-  --color-primay-5: rgb(25, 125, 62);
-  --color-primay-6: rgb(82, 221, 133);
-  --color-primay-7: rgb(125, 229, 164);
-  --color-primay-8: rgb(147, 234, 179);
-  --color-primay-9: rgb(190, 242, 209);
-  --color-primay-10: rgb(233, 251, 240);
+  --color-primary-1: rgb(25, 125, 62);
+  --color-primary1-trans1: rgba(25, 125, 62, 0.3);
+  --color-primary1-trans2: rgba(25, 125, 62, 0.75);
+  --color-primary-2: rgb(29, 145, 71);
+  --color-primary-3: rgb(33, 167, 82);
+  --color-primary-4: rgb(41, 210, 103);
+  --color-primary-5: rgb(25, 125, 62);
+  --color-primary-6: rgb(82, 221, 133);
+  --color-primary-7: rgb(125, 229, 164);
+  --color-primary-8: rgb(147, 234, 179);
+  --color-primary-9: rgb(190, 242, 209);
+  --color-primary-10: rgb(233, 251, 240);
 
   --color-gray-1: rgb(13, 18, 19);
-  --color-gray1-trans1: rgba(13, 18, 19, 0.25);
-  --color-gray1-trans2: rgba(13, 18, 19, 0.5);
   --color-gray-2: rgb(26, 36, 37);
   --color-gray-3: rgb(39, 54, 56);
   --color-gray-4: rgb(53, 72, 74);
@@ -73,13 +73,13 @@
   text-transform: uppercase;
   letter-spacing: 0.2em;
   background: var(--color-gray-10);
-  color: var(--color-primay-2);
+  color: var(--color-primary-2);
   transition: var(--transition-main);
   border: 1px solid transparent;
 }
 
 .btn-primary:hover {
-  background: var(--color-primay-3);
+  background: var(--color-primary-3);
   color: var(--color-white);
   border: 1px solid var(--color-white);
 }
@@ -107,14 +107,14 @@ body {
 
 /* Header */
 #home .nav {
-  padding: 1em 0;
+  padding: 1em 2em;
   position: relative;
 }
 
 .nav-left {
   display: flex;
   justify-content: space-between;
-  padding: 0 2em;
+  /* padding: 0 2em; */
 }
 
 .nav-logo {
@@ -129,7 +129,7 @@ body {
 .nav-logo .logo-text {
   padding-left: 0.5em;
   text-transform: capitalize;
-  color: var(--color-primay-4);
+  color: var(--color-primary-4);
   font-weight: bold;
   font-family: var(--font-script);
   font-size: 1.05rem;
@@ -149,6 +149,11 @@ body {
 .nav-menu-toggler > .toggler-container {
   font-size: 1.25rem;
   color: var(--color-main-pink);
+  display: none;
+}
+
+.nav-menu-toggler > .toggler-container.show-menu {
+  display: block;
 }
 
 .nav-center {
@@ -157,6 +162,7 @@ body {
   background-color: var(--color-white);
   overflow: hidden;
   position: absolute;
+  z-index: 1;
   left: 0;
   bottom: 0;
   transform: translateY(100%);
@@ -180,7 +186,7 @@ body {
 }
 
 .menus > .menu-item:hover {
-  background-color: var(--color-primay-4);
+  background-color: var(--color-primary-4);
   padding: 0.3em 2.5em;
 }
 
@@ -197,12 +203,12 @@ body {
 
 .social-link {
   padding: 0 0.1em;
-  color: var(--color-primay-3);
+  color: var(--color-primary-3);
   transition: var(--transition-main);
 }
 
 .social-link:hover {
-  color: var(--color-primay-8);
+  color: var(--color-primary-8);
 }
 
 @media screen and (min-width: 992px) {
@@ -235,6 +241,7 @@ body {
 
   .nav-social {
     display: block;
+    margin-left: auto;
   }
 
   .nav-menu > .menus {
@@ -252,25 +259,29 @@ body {
   }
 
   .menus > .menu-item:hover .menu-link {
-    color: var(--color-primay-2);
+    color: var(--color-primary-2);
     transform: scale(1.2);
   }
 }
 
 .hero {
-  /* min-height: 80vh; */
-  background-color: var(--color-primay-3);
+  background-color: var(--color-primary-3);
   color: var(--color-white);
   text-align: center;
-  position: relative;
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-center {
-  position: absolute;
+  /* position: absolute; */
   width: 90%;
-  top: 50%;
+  font-family: var(--font-secondary);
+
+  /* top: 50%;
   left: 50%;
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -60%); */
 }
 
 .hero .hero-center > * + * {
@@ -298,10 +309,10 @@ body {
 @media screen and (min-width: 768px) {
   .hero {
     background: linear-gradient(
-        var(--color-gray1-trans1),
-        var(--color-gray1-trans2)
+        var(--color-primary1-trans1),
+        rgba(0, 0, 0, 0.6)
       ),
-      url(../static/images/hero.jpg) no-repeat center/cover fixed;
+      url("../static/images/hero.jpg") no-repeat center/cover fixed;
   }
 
   .hero .hero-text {

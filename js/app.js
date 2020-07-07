@@ -1,4 +1,6 @@
 const navMenuToggler = document.querySelector(".nav-menu-toggler");
+const showMenu = document.querySelector(".toggler-container.show-menu");
+const hideMenu = document.querySelector(".toggler-container.hide-menu");
 const navMenu = document.querySelector(".nav-menu");
 const Menus = document.querySelector(".menus");
 const nav = document.querySelector(".nav");
@@ -16,4 +18,8 @@ navMenuToggler.addEventListener("click", function () {
   const outerMenuHeight = navMenu.getBoundingClientRect().height;
 
   navMenu.style.height = outerMenuHeight === 0 ? `${menuHeight}px` : "0";
+
+  for (child of this.children) {
+    child.classList.toggle("show-menu");
+  }
 });
