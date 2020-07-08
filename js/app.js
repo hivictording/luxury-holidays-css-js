@@ -6,7 +6,7 @@ const Menus = document.querySelector(".menus");
 const nav = document.querySelector(".nav");
 const hero = document.querySelector(".hero");
 
-// adjust the hero height based on the nav height
+// adjust the hero height based on the nav height after page loaded
 window.addEventListener("DOMContentLoaded", function () {
   const navHeight = nav.getBoundingClientRect().height;
   hero.style.height = `calc(100vh - ${navHeight}px)`;
