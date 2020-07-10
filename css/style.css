@@ -125,9 +125,22 @@ body {
 /* End of Global Styles */
 
 /* Header */
-#home .nav {
+#home {
+  background: linear-gradient(var(--color-primary1-trans1), rgba(0, 0, 0, 0.6)),
+    url("../static/images/hero.jpg") no-repeat center/cover fixed;
+}
+
+.nav {
   padding: 1em 2em;
   position: relative;
+}
+
+.nav.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-white);
 }
 
 .nav-left {
@@ -178,7 +191,6 @@ body {
 .nav-center {
   transition: var(--transition-main);
   width: 100%;
-  background-color: var(--color-white);
   overflow: hidden;
   position: absolute;
   z-index: 1;
@@ -186,6 +198,10 @@ body {
   bottom: 0;
   transform: translateY(100%);
   display: flex;
+}
+
+.nav.fixed .nav-center {
+  background-color: var(--color-white);
 }
 
 .nav-menu {
@@ -211,23 +227,39 @@ body {
 
 .menus > .menu-item > .menu-link {
   text-transform: capitalize;
-  color: var(--color-gray-2);
+  color: var(--color-gray-9);
   display: block;
   transition: var(--transition-main);
+}
+
+.nav.fixed .menus > .menu-item > .menu-link {
+  color: var(--color-gray-3);
 }
 
 .menus > .menu-item:hover .menu-link {
   color: var(--color-white);
 }
 
+.nav.fixed .menus > .menu-item:hover .menu-link {
+  color: var(--color-white);
+}
+
 .social-link {
   padding: 0 0.1em;
-  color: var(--color-primary-3);
+  color: var(--color-primary-7);
   transition: var(--transition-main);
 }
 
 .social-link:hover {
-  color: var(--color-primary-8);
+  color: var(--color-primary-10);
+}
+
+.nav.fixed .social-link {
+  color: var(--color-primary-2);
+}
+
+.nav.fixed .social-link:hover {
+  color: var(--color-primary-4);
 }
 
 @media screen and (min-width: 992px) {
@@ -270,6 +302,7 @@ body {
 
   .menus > .menu-item {
     padding: 0.3em 0.7em;
+    color: var(--color-gray-5);
   }
 
   .menus > .menu-item:hover {
@@ -278,13 +311,18 @@ body {
   }
 
   .menus > .menu-item:hover .menu-link {
-    color: var(--color-primary-2);
+    color: var(--color-gray-10);
+    transform: scale(1.2);
+  }
+
+  .nav.fixed .menus > .menu-item:hover .menu-link {
+    color: var(--color-gray-3);
     transform: scale(1.2);
   }
 }
 
 .hero {
-  background-color: var(--color-primary-3);
+  /* background-color: var(--color-primary-3); */
   color: var(--color-white);
   text-align: center;
   /* position: relative; */
@@ -325,13 +363,13 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-  .hero {
+  /* .hero {
     background: linear-gradient(
         var(--color-primary1-trans1),
         rgba(0, 0, 0, 0.6)
       ),
       url("../static/images/hero.jpg") no-repeat center/cover fixed;
-  }
+  } */
 
   .hero .hero-text {
     letter-spacing: 0.1em;
