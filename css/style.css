@@ -400,6 +400,7 @@ body {
   text-transform: uppercase;
   margin-bottom: 2em;
   font-size: 1.3rem;
+  font-family: var(--font-secondary);
 }
 
 .about-title span {
