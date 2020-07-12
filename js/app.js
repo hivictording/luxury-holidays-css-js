@@ -30,7 +30,7 @@ navMenuToggler.addEventListener("click", function () {
   const menuHeight = Menus.getBoundingClientRect().height;
   const outerMenuHeight = navMenu.getBoundingClientRect().height;
 
-  navMenu.style.height = outerMenuHeight === 0 ? `${menuHeight}px` : "0";
+  navMenu.style.height = outerMenuHeight === 0 ? `${menuHeight + 5}px` : "0";
 
   for (child of this.children) {
     child.classList.toggle("show-menu");
