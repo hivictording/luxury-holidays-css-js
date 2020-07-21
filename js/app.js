@@ -1,3 +1,36 @@
+const featuredTours = [
+  {
+    dest: "Japan",
+    title: "Explorer Japan",
+    image: "../static/images/featured/japan.jpg",
+    date: "09/10/2015",
+    desc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
+    length: 10,
+    price: 10000,
+  },
+  {
+    dest: "Germany",
+    title: "Wild Germany",
+    image: "../static/images/featured/germany.jpg",
+    date: "09/10/2015",
+    desc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
+    length: 7,
+    price: 7000,
+  },
+  {
+    dest: "Caribbean",
+    title: "Caribbean Beach",
+    image: "../static/images/featured/caribbean.jpg",
+    date: "09/10/2015",
+    desc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
+    length: 15,
+    price: 12000,
+  },
+];
+
 const home = document.querySelector(".header");
 const navMenuToggler = document.querySelector(".nav-menu-toggler");
 const showMenu = document.querySelector(".toggler-container.show-menu");

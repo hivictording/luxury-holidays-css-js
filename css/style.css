@@ -478,7 +478,7 @@ body {
 /* Service Section */
 #services {
   background-color: var(--color-gray-9);
-  padding: 2em 0;
+  padding: 3em 0;
 }
 
 .services-title {
@@ -577,3 +577,22 @@ body {
   }
 }
 /* End of Service Section */
+
+/* Featured Section */
+#featured {
+  padding: 3em 0;
+}
+
+.featured-title {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.3rem;
+  font-family: var(--font-secondary);
+  margin-bottom: 1em;
+}
+
+.featured-title h1 > span {
+  color: var(--color-primary-3);
+}
+/* End of Featured Section */
