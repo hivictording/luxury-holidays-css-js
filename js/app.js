@@ -8,6 +8,7 @@ const featuredTours = [
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
     length: 10,
     price: 10000,
+    category: "asia",
   },
   {
     dest: "Germany",
@@ -18,6 +19,7 @@ const featuredTours = [
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
     length: 7,
     price: 7000,
+    category: "europe",
   },
   {
     dest: "Caribbean",
@@ -28,6 +30,40 @@ const featuredTours = [
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
     length: 15,
     price: 12000,
+    category: "north america",
+  },
+  {
+    dest: "France",
+    title: "Sexy France",
+    image: "../static/images/featured/france.jpg",
+    date: "09/10/2015",
+    desc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
+    length: 7,
+    price: 7000,
+    category: "europe",
+  },
+  {
+    dest: "Thailand",
+    title: "Tropical Thailand",
+    image: "../static/images/featured/thailand.jpg",
+    date: "09/10/2015",
+    desc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
+    length: 10,
+    price: 10000,
+    category: "asia",
+  },
+  {
+    dest: "Spain",
+    title: "Love Spain",
+    image: "../static/images/featured/spain.jpg",
+    date: "09/10/2015",
+    desc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
+    length: 5,
+    price: 6500,
+    category: "europe",
   },
 ];
 

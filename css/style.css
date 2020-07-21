@@ -595,4 +595,74 @@ body {
 .featured-title h1 > span {
   color: var(--color-primary-3);
 }
+
+.featured-center > * + * {
+  margin-top: 1em;
+}
+
+.featured-tour {
+  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--color-primary-10);
+  box-shadow: 0 0.2em 0.7em var(--color-gray-10);
+  transition: var(--transition-main);
+}
+
+.featured-tour:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0.3em 0.8em var(--color-gray-9);
+}
+
+.tour-image {
+  position: relative;
+}
+
+.tour-image > img {
+  height: 14em;
+  object-fit: cover/center;
+}
+
+.tour-image .tour-date {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--color-primary-7);
+  padding: 0.2em 0.5em;
+  text-transform: capitalize;
+  font-size: 0.9em;
+}
+
+.tour-center {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 1.5em;
+  padding-bottom: 0.5em;
+}
+
+.tour-center > * {
+  margin-bottom: 1em;
+}
+
+.tour-title {
+  text-transform: capitalize;
+  letter-spacing: 0.1em;
+  color: var(--color-primary-1);
+}
+
+.tour-desc {
+  color: var(--color-gray-6);
+  font-size: 0.85em;
+}
+
+.tour-details {
+  color: var(--color-primary-3);
+  font-size: 0.9em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tour-dest {
+  text-transform: capitalize;
+}
 /* End of Featured Section */
