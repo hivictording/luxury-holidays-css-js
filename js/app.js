@@ -2,8 +2,8 @@ const featuredTours = [
   {
     dest: "Japan",
     title: "Explorer Japan",
-    image: "../static/images/featured/japan.jpg",
-    date: "09/10/2015",
+    image: "./static/images/featured/japan.jpg",
+    date: "07/16/2018",
     desc:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
     length: 10,
@@ -13,8 +13,8 @@ const featuredTours = [
   {
     dest: "Germany",
     title: "Wild Germany",
-    image: "../static/images/featured/germany.jpg",
-    date: "09/10/2015",
+    image: "./static/images/featured/germany.jpg",
+    date: "06/22/2013",
     desc:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
     length: 7,
@@ -23,9 +23,9 @@ const featuredTours = [
   },
   {
     dest: "Caribbean",
-    title: "Caribbean Beach",
-    image: "../static/images/featured/caribbean.jpg",
-    date: "09/10/2015",
+    title: "Caribbean Holidays",
+    image: "./static/images/featured/caribbean.jpg",
+    date: "05/10/2020",
     desc:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
     length: 15,
@@ -35,8 +35,8 @@ const featuredTours = [
   {
     dest: "France",
     title: "Sexy France",
-    image: "../static/images/featured/france.jpg",
-    date: "09/10/2015",
+    image: "./static/images/featured/france.jpg",
+    date: "10/09/2016",
     desc:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
     length: 7,
@@ -44,10 +44,43 @@ const featuredTours = [
     category: "europe",
   },
   {
+    dest: "Brazil",
+    title: "You have to feel it ",
+    image: "./static/images/featured/brazil.jpg",
+    date: "12/18/2012",
+    desc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
+    length: 18,
+    price: 3500,
+    category: "south america",
+  },
+  {
     dest: "Thailand",
     title: "Tropical Thailand",
-    image: "../static/images/featured/thailand.jpg",
+    image: "./static/images/featured/thailand.jpg",
     date: "09/10/2015",
+    desc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
+    length: 10,
+    price: 10000,
+    category: "asia",
+  },
+  {
+    dest: "Switerland",
+    title: "Jump into Switzerland",
+    image: "./static/images/featured/switzerland.jpg",
+    date: "03/25/2018",
+    desc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
+    length: 8,
+    price: 4500,
+    category: "europe",
+  },
+  {
+    dest: "Korea",
+    title: "Unforgettable Korea",
+    image: "./static/images/featured/korea.jpg",
+    date: "05/28/2014",
     desc:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
     length: 10,
@@ -57,7 +90,7 @@ const featuredTours = [
   {
     dest: "Spain",
     title: "Love Spain",
-    image: "../static/images/featured/spain.jpg",
+    image: "./static/images/featured/spain.jpg",
     date: "09/10/2015",
     desc:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
@@ -75,12 +108,51 @@ const navMenu = document.querySelector(".nav-menu");
 const Menus = document.querySelector(".menus");
 const nav = document.querySelector(".nav");
 const hero = document.querySelector(".hero");
+const featuredCenter = document.querySelector(".featured-center");
 
 const navHeight = nav.getBoundingClientRect().height;
 
 // adjust the hero height based on the nav height after page loaded
 window.addEventListener("DOMContentLoaded", function () {
   hero.style.height = `calc(100vh - ${navHeight}px)`;
+  let featuredCenterHTML = ``;
+
+  // Loading featured-center content from backend
+  featuredTours.forEach((tour) => {
+    featuredCenterHTML += `
+    <div class="featured-tour"> 
+      <div class="tour-image"> 
+        <img src=${tour.image} alt=${tour.dest} /> 
+        <div class="tour-date"> 
+          ${tour.date} 
+        </div> 
+      </div> 
+      <div class="tour-center"> 
+        <div class="tour-title">${tour.title}</div> 
+        <div class="tour-desc"> 
+          ${tour.desc} 
+            </div> 
+        <div class="tour-details"> 
+          <div class="tour-dest"> 
+            <span class="tour-dest-icon"> 
+              <f class="fas fa-plane"></f> 
+            </span> 
+                ${tour.dest} 
+              </div> 
+          <div class="tour-length"> 
+            <span class="tour-duration">${tour.length}</span> 
+                &nbsp;days 
+              </div> 
+          <div class="tour-price"> 
+            From&nbsp; 
+                <span class="tour-price-amount">$${tour.price}</span> 
+          </div> 
+        </div> 
+      </div> 
+    </div >`;
+  });
+
+  featuredCenter.innerHTML = featuredCenterHTML;
 });
 
 window.addEventListener("scroll", () => {
