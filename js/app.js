@@ -1,7 +1,7 @@
 const featuredTours = [
   {
     dest: "Japan",
-    title: "Explorer Japan",
+    title: "Explore Japan",
     image: "./static/images/featured/japan.jpg",
     date: "07/16/2018",
     desc:
@@ -22,6 +22,17 @@ const featuredTours = [
     category: "europe",
   },
   {
+    dest: "Canada",
+    title: "Beautiful Canada",
+    image: "./static/images/featured/canada.jpg",
+    date: "03/29/2016",
+    desc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
+    length: 16,
+    price: 6000,
+    category: "north-america",
+  },
+  {
     dest: "Caribbean",
     title: "Caribbean Holidays",
     image: "./static/images/featured/caribbean.jpg",
@@ -30,7 +41,7 @@ const featuredTours = [
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
     length: 15,
     price: 12000,
-    category: "north america",
+    category: "caribbean",
   },
   {
     dest: "France",
@@ -52,7 +63,7 @@ const featuredTours = [
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
     length: 18,
     price: 3500,
-    category: "south america",
+    category: "south-america",
   },
   {
     dest: "Thailand",
@@ -109,6 +120,7 @@ const Menus = document.querySelector(".menus");
 const nav = document.querySelector(".nav");
 const hero = document.querySelector(".hero");
 const featuredCenter = document.querySelector(".featured-center");
+const featuredTourCategory = document.querySelector(".featured-tour-category");
 
 const navHeight = nav.getBoundingClientRect().height;
 
@@ -116,8 +128,24 @@ const navHeight = nav.getBoundingClientRect().height;
 window.addEventListener("DOMContentLoaded", function () {
   hero.style.height = `calc(100vh - ${navHeight}px)`;
   let featuredCenterHTML = ``;
+  let featuredTourCategoryHTML = `
+    <li class="tours alltours"><a href="#" class="btn-primary">all tours</a></li>
+    `;
 
-  // Loading featured-center content from backend
+  // loading featured category
+  const TourCategory = featuredTours
+    .map((tour) => tour.category)
+    .reduce((set, next) => set.add(next), new Set());
+
+  TourCategory.forEach((category) => {
+    featuredTourCategoryHTML += `
+    <li class="tours ${category}"><a href="#" class="btn-primary">${category}</a></li>
+    `;
+  });
+
+  featuredTourCategory.innerHTML = featuredTourCategoryHTML;
+
+  // loading featured-center content from backend
   featuredTours.forEach((tour) => {
     featuredCenterHTML += `
     <div class="featured-tour"> 
@@ -155,6 +183,12 @@ window.addEventListener("DOMContentLoaded", function () {
   featuredCenter.innerHTML = featuredCenterHTML;
 });
 
+// tour filter
+
+let tourFilters = featuredTourCategory.querySelectorAll(".tours");
+console.log(tourFilters);
+
+// fixed header when scroll to some point
 window.addEventListener("scroll", () => {
   if (
     document.documentElement.scrollTop > navHeight ||

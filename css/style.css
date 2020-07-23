@@ -596,6 +596,28 @@ body {
   color: var(--color-primary-3);
 }
 
+.featured-tour-category {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 1.5em;
+  font-size: 0.8em;
+}
+
+.featured-tour-category > li {
+  margin-bottom: 1.2em;
+  margin-right: 1em;
+  /* flex-grow: 25%; */
+}
+
+.featured-tour-category > li > a {
+  box-shadow: 0.2em 0.2em 0.5em var(--color-gray-1);
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 .featured-center > * + * {
   margin-top: 1em;
 }
@@ -627,7 +649,8 @@ body {
 .tour-image .tour-date {
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--color-primary-7);
   padding: 0.2em 0.5em;
   text-transform: capitalize;
