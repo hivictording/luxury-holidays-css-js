@@ -609,7 +609,6 @@ body {
 .featured-tour-category > li {
   margin-bottom: 1.2em;
   margin-right: 1em;
-  /* flex-grow: 25%; */
 }
 
 .featured-tour-category > li > a {

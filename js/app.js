@@ -128,22 +128,19 @@ const navHeight = nav.getBoundingClientRect().height;
 window.addEventListener("DOMContentLoaded", function () {
   hero.style.height = `calc(100vh - ${navHeight}px)`;
   let featuredCenterHTML = ``;
-  let featuredTourCategoryHTML = `
-    <li class="tours alltours"><a href="#" class="btn-primary">all tours</a></li>
-    `;
 
   // loading featured category buttons
-  const TourCategory = featuredTours
+  // const TourCategory = featuredTours
+  let featuredTourCategoryName = featuredTours
     .map((tour) => tour.category)
-    .reduce((set, next) => set.add(next), new Set());
+    .reduce((set, next) => set.add(next), new Set().add("all tours"));
 
-  TourCategory.forEach((category) => {
-    featuredTourCategoryHTML += `
-    <li class="tours ${category}"><a href="#" class="btn-primary">${category}</a></li>
-    `;
-  });
-
-  featuredTourCategory.innerHTML = featuredTourCategoryHTML;
+  featuredTourCategory.innerHTML = Array.from(featuredTourCategoryName)
+    .map(
+      (category) =>
+        `<li class="tours ${category}"><a href="#" class="btn-primary">${category}</a></li>`
+    )
+    .join("");
 
   // loading featured-center content from backend
   featuredTours.forEach((tour) => {
