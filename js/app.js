@@ -132,7 +132,7 @@ window.addEventListener("DOMContentLoaded", function () {
     <li class="tours alltours"><a href="#" class="btn-primary">all tours</a></li>
     `;
 
-  // loading featured category
+  // loading featured category buttons
   const TourCategory = featuredTours
     .map((tour) => tour.category)
     .reduce((set, next) => set.add(next), new Set());
