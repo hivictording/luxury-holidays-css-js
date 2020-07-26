@@ -133,12 +133,12 @@ window.addEventListener("DOMContentLoaded", function () {
     .map((tour) => tour.category)
     .reduce((set, next) => set.add(next), new Set().add("all"));
 
-  featuredTourCategory.innerHTML = Array.from(featuredTourCategoryName)
-    .map(
-      (category) =>
-        `<li class="tours ${category}"><a href="#featured" class="btn-primary">${category}</a></li>`
-    )
-    .join("");
+  // Array.from: the second argument is a map() function
+  featuredTourCategory.innerHTML = Array.from(
+    featuredTourCategoryName,
+    (category) =>
+      `<li class="tours ${category}"><a href="#featured" class="btn-primary">${category}</a></li>`
+  ).join("");
 
   // loading featured-center content from backend
   featuredCenter.innerHTML = displayTours(featuredTours);
