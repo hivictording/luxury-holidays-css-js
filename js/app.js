@@ -124,27 +124,70 @@ const featuredTourCategory = document.querySelector(".featured-tour-category");
 
 const navHeight = nav.getBoundingClientRect().height;
 
-// adjust the hero height based on the nav height after page loaded
 window.addEventListener("DOMContentLoaded", function () {
+  // adjust the hero height based on the nav height after page loaded
   hero.style.height = `calc(100vh - ${navHeight}px)`;
-  let featuredCenterHTML = ``;
 
-  // loading featured category buttons
-  // const TourCategory = featuredTours
+  // loading featured tour category buttons
   let featuredTourCategoryName = featuredTours
     .map((tour) => tour.category)
-    .reduce((set, next) => set.add(next), new Set().add("all tours"));
+    .reduce((set, next) => set.add(next), new Set().add("all"));
 
   featuredTourCategory.innerHTML = Array.from(featuredTourCategoryName)
     .map(
       (category) =>
-        `<li class="tours ${category}"><a href="#" class="btn-primary">${category}</a></li>`
+        `<li class="tours ${category}"><a href="#featured" class="btn-primary">${category}</a></li>`
     )
     .join("");
 
   // loading featured-center content from backend
-  featuredTours.forEach((tour) => {
-    featuredCenterHTML += `
+  featuredCenter.innerHTML = displayTours(featuredTours);
+
+  // selecting featured tour category buttons
+  const featuredTourCategoryBtns = document.querySelectorAll(".tours");
+
+  // Filter featured tours
+  featuredTourCategoryBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      featuredCenter.innerHTML = Array.from(this.classList).includes("all")
+        ? displayTours(featuredTours)
+        : displayTours(
+            featuredTours.filter(
+              (tour) => tour.category === Array.from(this.classList)[1]
+            )
+          );
+    });
+  });
+});
+
+// fixed header when scroll to some point
+window.addEventListener("scroll", () => {
+  if (
+    document.documentElement.scrollTop > navHeight ||
+    document.body.scrollTop > navHeight
+  ) {
+    nav.classList.add("fixed");
+  } else {
+    nav.classList.remove("fixed");
+  }
+});
+
+// adjust the menu height dynamically
+navMenuToggler.addEventListener("click", function () {
+  const menuHeight = Menus.getBoundingClientRect().height;
+  const outerMenuHeight = navMenu.getBoundingClientRect().height;
+
+  navMenu.style.height = outerMenuHeight === 0 ? `${menuHeight + 5}px` : "0";
+
+  for (child of this.children) {
+    child.classList.toggle("show-menu");
+  }
+});
+
+function displayTours(tours) {
+  return tours
+    .map(
+      (tour) => `
     <div class="featured-tour"> 
       <div class="tour-image"> 
         <img src=${tour.image} alt=${tour.dest} /> 
@@ -174,37 +217,7 @@ window.addEventListener("DOMContentLoaded", function () {
           </div> 
         </div> 
       </div> 
-    </div >`;
-  });
-
-  featuredCenter.innerHTML = featuredCenterHTML;
-});
-
-// tour filter
-
-let tourFilters = featuredTourCategory.querySelectorAll(".tours");
-console.log(tourFilters);
-
-// fixed header when scroll to some point
-window.addEventListener("scroll", () => {
-  if (
-    document.documentElement.scrollTop > navHeight ||
-    document.body.scrollTop > navHeight
-  ) {
-    nav.classList.add("fixed");
-  } else {
-    nav.classList.remove("fixed");
-  }
-});
-
-// adjust the menu height dynamically
-navMenuToggler.addEventListener("click", function () {
-  const menuHeight = Menus.getBoundingClientRect().height;
-  const outerMenuHeight = navMenu.getBoundingClientRect().height;
-
-  navMenu.style.height = outerMenuHeight === 0 ? `${menuHeight + 5}px` : "0";
-
-  for (child of this.children) {
-    child.classList.toggle("show-menu");
-  }
-});
+    </div >`
+    )
+    .join("");
+}
