@@ -55,6 +55,17 @@ const featuredTours = [
     category: "europe",
   },
   {
+    dest: "USA",
+    title: "Driving USA",
+    image: "./static/images/featured/usa.jpg",
+    date: "05/18/2020",
+    desc:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem dignissimos perferendis vero laudantium sunt voluptas eos possimus! Sint, fugiat voluptatem?",
+    length: 15,
+    price: 12000,
+    category: "north-america",
+  },
+  {
     dest: "Brazil",
     title: "You have to feel it ",
     image: "./static/images/featured/brazil.jpg",
@@ -116,7 +127,7 @@ const navMenuToggler = document.querySelector(".nav-menu-toggler");
 const showMenu = document.querySelector(".toggler-container.show-menu");
 const hideMenu = document.querySelector(".toggler-container.hide-menu");
 const navMenu = document.querySelector(".nav-menu");
-const Menus = document.querySelector(".menus");
+const menus = document.querySelector(".menus");
 const nav = document.querySelector(".nav");
 const hero = document.querySelector(".hero");
 const featuredCenter = document.querySelector(".featured-center");
@@ -129,15 +140,16 @@ window.addEventListener("DOMContentLoaded", function () {
   hero.style.height = `calc(100vh - ${navHeight}px)`;
 
   // loading featured tour category buttons
-  let featuredTourCategoryName = featuredTours
-    .map((tour) => tour.category)
-    .reduce((set, next) => set.add(next), new Set().add("all"));
+  let featuredTourCategoryName = new Set(
+    featuredTours.map((tour) => tour.category)
+  ).add("all");
+  // .reduce((set, next) => set.add(next), new Set().add("all"));
 
   // Array.from: the second argument is a map() function
   featuredTourCategory.innerHTML = Array.from(
     featuredTourCategoryName,
     (category) =>
-      `<li class="tours ${category}"><a href="#featured" class="btn-primary">${category}</a></li>`
+      `<li class="tours" data-category=${category}><a href="#featured" class="btn-primary">${category}</a></li>`
   ).join("");
 
   // loading featured-center content from backend
@@ -149,13 +161,14 @@ window.addEventListener("DOMContentLoaded", function () {
   // Filter featured tours
   featuredTourCategoryBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
-      featuredCenter.innerHTML = Array.from(this.classList).includes("all")
-        ? displayTours(featuredTours)
-        : displayTours(
-            featuredTours.filter(
-              (tour) => tour.category === Array.from(this.classList)[1]
-            )
-          );
+      featuredCenter.innerHTML =
+        this.dataset.category === "all"
+          ? displayTours(featuredTours)
+          : displayTours(
+              featuredTours.filter(
+                (tour) => tour.category === this.dataset.category
+              )
+            );
     });
   });
 });
@@ -174,7 +187,7 @@ window.addEventListener("scroll", () => {
 
 // adjust the menu height dynamically
 navMenuToggler.addEventListener("click", function () {
-  const menuHeight = Menus.getBoundingClientRect().height;
+  const menuHeight = menus.getBoundingClientRect().height;
   const outerMenuHeight = navMenu.getBoundingClientRect().height;
 
   navMenu.style.height = outerMenuHeight === 0 ? `${menuHeight + 5}px` : "0";
