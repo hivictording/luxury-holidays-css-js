@@ -142,7 +142,9 @@ window.addEventListener("DOMContentLoaded", function () {
   // loading featured tour category buttons
   let featuredTourCategoryName = new Set(
     featuredTours.map((tour) => tour.category)
-  ).add("all");
+  )
+    .add("all")
+    .add("random");
   // .reduce((set, next) => set.add(next), new Set().add("all"));
 
   // Array.from: the second argument is a map() function
@@ -161,14 +163,21 @@ window.addEventListener("DOMContentLoaded", function () {
   // Filter featured tours
   featuredTourCategoryBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
-      featuredCenter.innerHTML =
-        this.dataset.category === "all"
-          ? displayTours(featuredTours)
-          : displayTours(
-              featuredTours.filter(
-                (tour) => tour.category === this.dataset.category
-              )
-            );
+      switch (this.dataset.category) {
+        case "all":
+          featuredCenter.innerHTML = displayTours(featuredTours);
+          break;
+        case "random":
+          let randomTours = getRandomItems(featuredTours, 5);
+          featuredCenter.innerHTML = displayTours(randomTours);
+          break;
+        default:
+          featuredCenter.innerHTML = displayTours(
+            featuredTours.filter(
+              (tour) => tour.category === this.dataset.category
+            )
+          );
+      }
     });
   });
 });
@@ -196,6 +205,18 @@ navMenuToggler.addEventListener("click", function () {
     child.classList.toggle("show-menu");
   }
 });
+
+function getRandomItems(array, number) {
+  let newArray = new Array();
+  while (newArray.length < number) {
+    const randomItem = array[Math.floor(Math.random() * array.length)];
+    if (!newArray.includes(randomItem)) {
+      newArray.push(randomItem);
+    }
+  }
+
+  return newArray;
+}
 
 function displayTours(tours) {
   return tours
