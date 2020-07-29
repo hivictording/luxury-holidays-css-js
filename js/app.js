@@ -134,6 +134,7 @@ const featuredCenter = document.querySelector(".featured-center");
 const featuredTourCategory = document.querySelector(".featured-tour-category");
 
 const navHeight = nav.getBoundingClientRect().height;
+let currentFeaturedTour = 0;
 
 window.addEventListener("DOMContentLoaded", function () {
   // adjust the hero height based on the nav height after page loaded
@@ -144,18 +145,20 @@ window.addEventListener("DOMContentLoaded", function () {
     featuredTours.map((tour) => tour.category)
   )
     .add("all")
-    .add("random");
-  // .reduce((set, next) => set.add(next), new Set().add("all"));
+    .add("random")
+    .add("random-one");
 
   // Array.from: the second argument is a map() function
   featuredTourCategory.innerHTML = Array.from(
     featuredTourCategoryName,
     (category) =>
-      `<li class="tours" data-category=${category}><a href="#featured" class="btn-primary">${category}</a></li>`
+      `<li class="tours" data-category=${category}><a href="#featured" class="btn-primary">${category
+        .split("-")
+        .join(" ")}</a></li>`
   ).join("");
 
   // loading featured-center content from backend
-  featuredCenter.innerHTML = displayTours(featuredTours);
+  featuredCenter.innerHTML = displayTours(featuredTours.slice(0, 1));
 
   // selecting featured tour category buttons
   const featuredTourCategoryBtns = document.querySelectorAll(".tours");
@@ -168,8 +171,14 @@ window.addEventListener("DOMContentLoaded", function () {
           featuredCenter.innerHTML = displayTours(featuredTours);
           break;
         case "random":
-          let randomTours = getRandomItems(featuredTours, 5);
-          featuredCenter.innerHTML = displayTours(randomTours);
+          featuredCenter.innerHTML = displayTours(
+            getRandomItems(featuredTours, 5)
+          );
+          break;
+        case "random-one":
+          const randomTour = getRandomItems(featuredTours, 1);
+          featuredCenter.innerHTML = displayTours(randomTour);
+          currentFeaturedTour = featuredTours.indexOf(randomTour[0]);
           break;
         default:
           featuredCenter.innerHTML = displayTours(
@@ -181,6 +190,29 @@ window.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// Featured tour left and right arrows
+const featuredTourScroll = document.querySelector(".featured-tour-scroll");
+
+for (let item of featuredTourScroll.children) {
+  item.addEventListener("click", function (event) {
+    if (event.currentTarget.classList.contains("featured-tour-next")) {
+      currentFeaturedTour++;
+    } else {
+      currentFeaturedTour--;
+    }
+
+    if (currentFeaturedTour < 0) {
+      currentFeaturedTour = featuredTours.length - 1;
+    } else if (currentFeaturedTour > featuredTours.length - 1) {
+      currentFeaturedTour = 0;
+    }
+
+    featuredCenter.innerHTML = displayTours(
+      featuredTours.slice(currentFeaturedTour, currentFeaturedTour + 1)
+    );
+  });
+}
 
 // fixed header when scroll to some point
 window.addEventListener("scroll", () => {

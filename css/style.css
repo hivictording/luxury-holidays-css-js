@@ -617,6 +617,23 @@ body {
   padding-right: 1em;
 }
 
+.featured-tour-scroll {
+  display: flex;
+  width: 15%;
+  margin: 1em auto;
+  justify-content: space-between;
+}
+
+.featured-tour-scroll > *:hover > a {
+  color: var(--color-primary-6);
+}
+
+.featured-tour-scroll > * > a {
+  font-size: 1.5em;
+  color: var(--color-primary-2);
+  transition: var(--transition-main);
+}
+
 .featured-center > * + * {
   margin-top: 1em;
 }
