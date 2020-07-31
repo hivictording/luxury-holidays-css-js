@@ -287,3 +287,17 @@ function displayTours(tours) {
     )
     .join("");
 }
+
+// Toggle the about modal
+
+const aboutContentButton = document.querySelector(".about-content-button");
+const modalAbout = document.querySelector("#modal-about");
+const modalAboutClose = document.querySelector(".modal-about-close");
+
+aboutContentButton.addEventListener("click", () => {
+  modalAbout.classList.add("show-modal");
+});
+
+modalAboutClose.addEventListener("click", () => {
+  modalAbout.classList.remove("show-modal");
+});

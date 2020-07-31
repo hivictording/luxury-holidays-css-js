@@ -732,3 +732,48 @@ body {
   }
 }
 /* End of Featured Section */
+
+/* Modal for about section */
+#modal-about {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  background: linear-gradient(rgba(25, 125, 62, 0.5), rgba(25, 125, 62, 0.5));
+  transition: var(--transition-main);
+  opacity: 0;
+  pointer-events: none;
+}
+#modal-about.show-modal {
+  opacity: 100;
+  pointer-events: all;
+}
+.modal-about-dialog {
+  position: absolute;
+  width: 50%;
+  height: 30%;
+  top: 50%;
+  left: 50%;
+  background: var(--color-gray-8);
+  transform: translate(-50%, -50%);
+}
+
+.modal-about-menu {
+  text-align: right;
+}
+
+.modal-about-menu > a {
+  display: inline-block;
+  padding: 0.3em 0.5em;
+  color: var(--color-primary-5);
+  cursor: pointer;
+}
+
+.modal-about-center {
+  width: 85%;
+  margin: 1em auto;
+  text-align: center;
+}
+/* End of Modal for about section */
