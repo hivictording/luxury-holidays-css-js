@@ -160,10 +160,9 @@ window.addEventListener("DOMContentLoaded", function () {
   // loading featured-center content from backend
   featuredCenter.innerHTML = displayTours(featuredTours.slice(0, 1));
 
-  // selecting featured tour category buttons
+  // Filter featured tours
   const featuredTourCategoryBtns = document.querySelectorAll(".tours");
 
-  // Filter featured tours
   featuredTourCategoryBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
       switch (this.dataset.category) {
